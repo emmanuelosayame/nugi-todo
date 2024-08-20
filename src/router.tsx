@@ -3,14 +3,16 @@ import {
   isRouteErrorResponse,
   Outlet,
   redirect,
+  RouteObject,
   ScrollRestoration,
   useRouteError,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Store from './store';
-import { Loading } from './components/Loading';
-import App from './Home';
-import Home from './Home';
+import { Loading } from './components/loading';
+import { Suspense } from 'react';
+import RootLayout from './layout/layout';
+import { todoRoutes } from './todo/routes';
 
 function RootRoute() {
   // const {user} = useLoaderData() as {user: Promise<User | null>};
@@ -68,13 +70,12 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        // loader: async () => {
-        //   // await requireAnonymous();
-        //   return redirect('/login');
-        // },
-        Component: Home,
+        loader: async () => {
+          // await requireAnonymous();
+          return redirect('/todos');
+        },
       },
-
+      todoRoutes,
       // authRoutes,
       // businessSetupRoutes,
       // businessRoutes,

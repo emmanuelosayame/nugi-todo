@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import { RouterProvider } from 'react-router-dom';
-import { Toaster } from './components/Toaster';
+import { Toaster } from './components/toaster';
 import { router } from './router';
 
 async function enableMocking() {
