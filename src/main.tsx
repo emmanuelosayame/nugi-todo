@@ -1,14 +1,16 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './styles/index.css';
+import { RouterProvider } from 'react-router-dom';
+import { Toaster } from './components/Toaster';
+import { router } from './router';
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== 'development') {
     return;
   }
 
-  const { worker } = await import("./mocks/browser");
+  const { worker } = await import('./mocks/browser');
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
@@ -16,9 +18,10 @@ async function enableMocking() {
 }
 
 enableMocking().then(() => {
-  createRoot(document.getElementById("root")!).render(
+  createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <App />
+      <RouterProvider router={router} />
+      <Toaster richColors />
     </StrictMode>
   );
 });
