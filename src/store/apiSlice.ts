@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Todo } from '../types/todo';
-import { TodoMutation } from '../screens/todo';
+import { Todo, TodoMutation } from '../entities/todos';
 
 // Define a service using a base URL and expected endpoints
 export const API = createApi({
   reducerPath: 'API',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${window.location.origin}/api/` }),
   endpoints: (builder) => ({
     getTodos: builder.query<{ data: Todo[]; message: string }, undefined>({
       query: () => `todos`,

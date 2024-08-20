@@ -15,7 +15,9 @@ export function Component() {
   let [searchParams, setSearchParams] = useSearchParams();
   const filter = (searchParams.get('filter') ?? 'all') as Filters;
 
-  const { data, isLoading } = useGetTodosQuery(undefined);
+  const { data, isLoading } = useGetTodosQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const todos = [...(data?.data ?? [])].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
