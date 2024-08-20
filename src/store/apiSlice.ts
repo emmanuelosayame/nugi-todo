@@ -26,4 +26,4 @@ export const API = createApi({
   }),
 });
 
-export const { useGetTodosQuery, useGetTodoQuery } = API;
+export const { useGetTodosQuery } = API;
