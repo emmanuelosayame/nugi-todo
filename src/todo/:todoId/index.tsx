@@ -64,7 +64,7 @@ export default function TodoComponent() {
 
         {todo && <TodoOptions todo={todo} />}
       </div>
-      <div className='px-3 w-full flex flex-col gap-4 items-center'>
+      <div className='px-3 w-full flex flex-col gap-4 items-center max-w-xl mx-auto'>
         <h5 className='text-sm text-fgColor-muted'>
           {format(updatedAt, 'PPp')}
         </h5>

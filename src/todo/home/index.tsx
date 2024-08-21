@@ -9,8 +9,7 @@ import { ReactElement } from 'react';
 import OnProgress from './on-progress';
 import Completed from './completed';
 import { AnimatePage } from '../../components/animation';
-
-type Filters = 'all' | 'on-progress' | 'completed';
+import { Filters } from '../../entities/shared';
 
 export function Home() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -34,7 +33,7 @@ export function Home() {
 
   return (
     <>
-      <div className='flex px-4 items-center gap-4'>
+      <div className='flex px-4 items-center gap-4 md:w-1/2 md:hidden'>
         <button
           className={`py-1.5 w-full transition-all ${
             filter === 'all' ? 'bg-[#0757ba] text-white rounded-lg' : ''
@@ -62,7 +61,8 @@ export function Home() {
 
       <Link
         to={'/todos/new'}
-        className='button fixed bottom-4 center-x w-11/12'>
+        className='button fixed bottom-4 md:bottom-7 center-x 
+        md:left-auto md:right-10 w-11/12 md:w-40 md:py-4'>
         <PlusIcon width={30} />
         <p>Create New</p>
       </Link>

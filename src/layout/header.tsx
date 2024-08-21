@@ -5,7 +5,7 @@ import Search from '../components/Search';
 function Header() {
   return (
     <header
-      className='bg-white w-full flex fixed top-0 inset-x-0
+      className='bg-white w-full flex fixed md:absolute top-0 inset-x-0
      items-center gap-4 px-3 py-2.5 border-b'>
       {/* <h4 className='text-lg font-semibold'>Nugi</h4> */}
 
@@ -21,7 +21,7 @@ function Header() {
       </div>
 
       <Search />
-      <MenuIcon width={30} className='' />
+      <MenuIcon width={30} className='md:hidden' />
     </header>
   );
 }

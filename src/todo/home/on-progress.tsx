@@ -14,7 +14,7 @@ function OnProgress({ todos }: { todos: Todo[] }) {
       </h4>
       {/* <button className='text-fgColor-link'>View More</button> */}
 
-      <div className='flex flex-col gap-5 overflow-x-auto px-5 pb-20 w-full mt-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-5 overflow-x-auto px-5 pb-20 w-full mt-3'>
         {notCompletedTodos.map((todo) => (
           <OnProgressTodo todo={todo} key={todo.id} />
         ))}

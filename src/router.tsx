@@ -3,7 +3,6 @@ import {
   isRouteErrorResponse,
   Outlet,
   redirect,
-  RouteObject,
   ScrollRestoration,
   useRouteError,
 } from 'react-router-dom';
@@ -25,8 +24,6 @@ function RootRoute() {
 
 function ErrorBoundary() {
   const error = useRouteError();
-
-  console.log(error);
 
   if (isRouteErrorResponse(error)) {
     return (

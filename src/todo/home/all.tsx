@@ -49,7 +49,7 @@ function AllTodos({ todos }: { todos: Todo[] }) {
           </Link>
         </div>
 
-        <div className='flex flex-col gap-5 overflow-x-auto px-5 pb-20 w-full mt-3'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-5 overflow-x-auto px-5 pb-20 w-full mt-3'>
           {completedTodos.slice(0, 5).map((todo) => (
             <CompletedTodo todo={todo} key={todo.id} />
           ))}
