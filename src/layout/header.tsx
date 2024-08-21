@@ -5,12 +5,13 @@ import {
   Root,
   Trigger,
 } from '@radix-ui/react-dialog';
-import { Menu, SearchIcon, UserCircle2Icon, XIcon } from 'lucide-react';
+import { Menu, SearchIcon, XIcon } from 'lucide-react';
 import { useGetTodosQuery } from '../store/apiSlice';
 import { Loading } from '../components/loading';
 import { useState } from 'react';
 import Fuse from 'fuse.js';
 import { debounce } from 'lodash';
+import image from '../assets/profile.jpg';
 
 function Header() {
   return (
@@ -19,11 +20,14 @@ function Header() {
      items-center gap-4 px-3 py-2.5 border-b'>
       {/* <h4 className='text-lg font-semibold'>Nugi</h4> */}
 
-      <div className='flex items-center flex-1'>
-        <UserCircle2Icon width={50} />
-        <div className='leading-4'>
-          <h5 className='text-lg'>Hello,</h5>
-          <p className='text-[17px]'>Emmanuel</p>
+      <div className='flex items-center flex-1 gap-2'>
+        <img
+          src={image}
+          className='w-10 h-10 rounded-full border object-contain'
+        />
+        <div className='leading-3 font-normal text-black/80'>
+          <h5 className='text-[17px]'>Hello,</h5>
+          <p className='text-lg'>Emmanuel</p>
         </div>
       </div>
 
@@ -57,7 +61,7 @@ const Search = () => {
       <Portal>
         <Overlay className=' bg-black/40 z-30 inset-0 fixed backdrop-blur-sm' />
         <Content
-          className='fixed z-40 inset-x-4 top-10 rounded-[10px] h-[80vh]
+          className='fixed z-40 inset-x-4 top-10 rounded-lg h-[80vh]
                        bg-white backdrop-blur-md transition-all py-2 px-3'>
           <div className='flex justify-end p-1 mb-2'>
             <Trigger>
@@ -66,7 +70,7 @@ const Search = () => {
           </div>
           <input
             placeholder='Search Todo'
-            className='bg-black/5 w-full p-3 rounded-[10px] border text-base'
+            className='bg-black/5 w-full p-3 rounded-lg border text-base'
             onChange={debounce((e) => {
               setKeyword(e.target.value);
             }, 800)}

@@ -10,8 +10,6 @@ import {
 import { Provider } from 'react-redux';
 import Store from './store';
 import { Loading } from './components/loading';
-import { Suspense } from 'react';
-import RootLayout from './layout/layout';
 import { todoRoutes } from './todo/routes';
 
 function RootRoute() {
@@ -19,9 +17,6 @@ function RootRoute() {
   return (
     <Provider store={Store}>
       <Loading />
-      {/* <Suspense fallback={<div>Anthony</div>}> */}
-      {/* <Await resolve={user}>{() => <Outlet />}</Await> */}
-      {/* </Suspense> */}
       <Outlet />
       <ScrollRestoration />
     </Provider>

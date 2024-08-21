@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
-import { Outlet, redirect, RouteObject } from 'react-router-dom';
+import { json, Outlet, redirect, RouteObject } from 'react-router-dom';
 import RootLayout from '../layout/layout';
 import TodoComponent from './todo';
 import Store from '../store';
 import { API } from '../store/apiSlice';
 import { DTOToType, parseFormData } from '../utils/parser';
 import { todoMutatationS } from '../entities/todos';
+import { sonner } from '../components/toaster';
 
 function delay() {
   return new Promise((resolve) => setTimeout(resolve, 1000));
@@ -48,7 +49,9 @@ export const todoRoutes: RouteObject = {
 
             const isNew = formData.todoId === 'new';
 
-            return isNew ? redirect('/todos') : null;
+            sonner.success(isNew ? 'Created Todo' : 'Saved Todo');
+
+            return isNew ? redirect('/todos') : json({ success: true });
           },
           Component: TodoComponent,
         },

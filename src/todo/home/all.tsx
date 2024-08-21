@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CompletedTodo, OnProgressTodo } from '.';
 import { Todo } from '../../entities/todos';
 
@@ -15,11 +16,16 @@ function AllTodos({ todos }: { todos: Todo[] }) {
               ({notCompletedTodos.length})
             </span>
           </h4>
-          {/* <button className='text-fgColor-link'>View More</button> */}
+          <Link
+            replace
+            to={'/todos?filter=on-progress'}
+            className='text-fgColor-link'>
+            View All
+          </Link>
         </div>
 
         <div className='flex gap-5 overflow-x-auto px-5 w-full mt-3'>
-          {notCompletedTodos.map((todo) => (
+          {notCompletedTodos.slice(0, 5).map((todo) => (
             <OnProgressTodo
               todo={todo}
               key={todo.id}
@@ -35,11 +41,16 @@ function AllTodos({ todos }: { todos: Todo[] }) {
               ({completedTodos.length})
             </span>
           </h4>
-          {/* <button className='text-fgColor-link'>View More</button> */}
+          <Link
+            replace
+            to={'/todos?filter=completed'}
+            className='text-fgColor-link'>
+            View All
+          </Link>
         </div>
 
         <div className='flex flex-col gap-5 overflow-x-auto px-5 pb-20 w-full mt-3'>
-          {completedTodos.map((todo) => (
+          {completedTodos.slice(0, 5).map((todo) => (
             <CompletedTodo todo={todo} key={todo.id} />
           ))}
         </div>

@@ -3,7 +3,7 @@ import Header from './header';
 
 function RootLayout() {
   return (
-    <main className='pt-20 min-h-screen h-full'>
+    <main className='pt-20 min-h-screen h-full bg-bgColor-inset'>
       <Header />
       <Outlet />
     </main>

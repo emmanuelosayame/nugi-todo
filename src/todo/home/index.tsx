@@ -35,22 +35,22 @@ export function Component() {
     <>
       <div className='flex px-4 items-center gap-4'>
         <button
-          className={`rounded-xl py-2.5 px-6 ${
-            filter === 'all' ? 'bg-black text-white' : 'bg-white'
+          className={`py-1.5 w-full transition-all ${
+            filter === 'all' ? 'bg-[#0757ba] text-white rounded-lg' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'all' })}>
           All
         </button>
         <button
-          className={`rounded-xl py-2.5 px-6 ${
-            filter === 'on-progress' ? 'bg-black text-white' : 'bg-white'
+          className={`py-1.5 w-full transition-all ${
+            filter === 'on-progress' ? 'bg-[#0757ba] text-white rounded-lg' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'on-progress' })}>
           On Progress
         </button>
         <button
-          className={`rounded-xl py-2.5 px-6 ${
-            filter === 'completed' ? 'bg-black text-white' : 'bg-white'
+          className={`py-1.5 w-full transition-all ${
+            filter === 'completed' ? 'bg-[#0757ba] text-white rounded-lg' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'completed' })}>
           Completed
@@ -61,8 +61,7 @@ export function Component() {
 
       <Link
         to={'/todos/new'}
-        className='flex justify-center items-center gap-3 fixed bottom-4 bg-black text-white rounded-xl
-       p-3 center-x w-11/12'>
+        className='button fixed bottom-4 center-x w-11/12'>
         <PlusIcon width={30} />
         <p>Create New</p>
       </Link>
@@ -78,7 +77,9 @@ export const OnProgressTodo = ({
   scrollDirection?: 'horizontal' | 'vertical';
 }) => {
   return (
-    <Link to={`/todos/${todo.id}`} className='bg-white rounded-xl p-4'>
+    <Link
+      to={`/todos/${todo.id}`}
+      className='rounded-xl border border-border-muted bg-white p-5'>
       <div className={`${scrollDirection === 'vertical' ? '' : 'w-56'}`}>
         <h6 className='text-lg whitespace-nowrap text-ellipsis'>
           {todo.title}
@@ -96,7 +97,9 @@ export const OnProgressTodo = ({
 
 export const CompletedTodo = ({ todo }: { todo: Todo }) => {
   return (
-    <Link to={`/todos/${todo.id}`} className='bg-white rounded-xl p-4'>
+    <Link
+      to={`/todos/${todo.id}`}
+      className='rounded-xl border border-border-muted bg-white p-5'>
       <div className='flex '>
         <h6 className='text-lg whitespace-nowrap text-ellipsis flex-1 line-through'>
           {todo.title}

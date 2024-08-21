@@ -43,7 +43,7 @@
   */
   body {
     /* @apply bg-bgColor-default text-fgColor-default; */
-    background-color: whitesmoke;
+    background-color: #fff;
   }
 }
 
@@ -129,6 +129,11 @@ body,
   }
   .center-y {
     @apply top-1/2 -translate-y-1/2;
+  }
+  .button {
+    @apply flex justify-center items-center gap-3 bg-[#0244D0FD] font-medium
+           text-white rounded-lg
+       p-2.5 disabled:bg-[#76A5FF];
   }
 }
 
