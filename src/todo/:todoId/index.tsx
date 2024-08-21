@@ -32,7 +32,10 @@ export default function TodoComponent() {
   } = useForm<TodoMutation>({
     defaultValues: {
       title: todo?.title ?? '',
-      isCompleted: todo?.isCompleted ?? false,
+      // convert stringified isCompleted to actual boolean
+      isCompleted: JSON.parse(
+        ((todo?.isCompleted || 'false') as string).toLowerCase()
+      ),
       todoId,
     },
     resolver: zodResolver(todoMutatationS),
@@ -72,13 +75,15 @@ export default function TodoComponent() {
           placeholder='Enter Title'
           autoFocus
         />
-
+        {/* I noticed api doesn't allow reverting completed todo state. I'll make it
+        one way here then. */}
         <div className='w-full flex items-center justify-center gap-5'>
           <p className='text-lg'>Completed:</p>
           <button
+            disabled={isCompleted}
             type='button'
             className={`rounded-full size-7 flex justify-center 
-              items-center border-2 ${
+              items-center border-2 disabled:opacity-50 ${
                 isCompleted ? 'bg-green-500 border-green-500' : ''
               }`}
             onClick={() =>
@@ -87,7 +92,6 @@ export default function TodoComponent() {
             {isCompleted && <Check size={20} className={`stroke-white`} />}
           </button>
         </div>
-
         <button disabled={!isDirty} type='submit' className='button w-full'>
           {naivigation.state === 'submitting' ? <Spinner /> : <span>Save</span>}
         </button>

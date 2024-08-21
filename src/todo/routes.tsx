@@ -45,7 +45,9 @@ export const todoRoutes: RouteObject = {
             const formData =
               await parseFormData<DTOToType<typeof todoMutatationS>>(request);
 
-            await Store.dispatch(API.endpoints.saveTodo.initiate(formData));
+            await Store.dispatch(
+              API.endpoints.saveTodo.initiate(formData, { forceRefetch: true })
+            );
 
             const isNew = formData.todoId === 'new';
 
