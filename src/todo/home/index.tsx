@@ -8,10 +8,11 @@ import { format } from 'date-fns';
 import { ReactElement } from 'react';
 import OnProgress from './on-progress';
 import Completed from './completed';
+import { AnimatePage } from '../../components/animation';
 
 type Filters = 'all' | 'on-progress' | 'completed';
 
-export function Component() {
+export function Home() {
   let [searchParams, setSearchParams] = useSearchParams();
   const filter = (searchParams.get('filter') ?? 'all') as Filters;
 
@@ -115,3 +116,5 @@ export const CompletedTodo = ({ todo }: { todo: Todo }) => {
     </Link>
   );
 };
+
+export const Component = AnimatePage(Home);

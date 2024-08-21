@@ -23,6 +23,14 @@ export const API = createApi({
         };
       },
     }),
+    deleteTodo: builder.query<{ data: Todo; message: string }, string>({
+      query: (todoId) => {
+        return {
+          url: `todos/${todoId}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 

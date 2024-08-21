@@ -1,14 +1,16 @@
-import { useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
+import {
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+  useSubmit,
+} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
-import {
-  Check,
-  ChevronLeftIcon,
-  CircleEllipsisIcon,
-  XIcon,
-} from 'lucide-react';
-import { Todo, todoMutatationS, TodoMutation } from '../entities/todos';
+import { Check, ChevronLeftIcon } from 'lucide-react';
+import { Todo, todoMutatationS, TodoMutation } from '../../entities/todos';
+import TodoOptions from './todoOptions';
+import { Spinner } from '../../components/Spinner';
 
 export default function TodoComponent() {
   const { todoId, todo } = useLoaderData() as {
@@ -19,6 +21,7 @@ export default function TodoComponent() {
   const isNew = todoId === 'new';
 
   const naivigate = useNavigate();
+  const naivigation = useNavigation();
 
   const {
     register,
@@ -56,7 +59,7 @@ export default function TodoComponent() {
           <p className='text-base'>Todos</p>
         </button>
 
-        {!isNew && <TodoOptions />}
+        {todo && <TodoOptions todo={todo} />}
       </div>
       <div className='px-3 w-full flex flex-col gap-4 items-center'>
         <h5 className='text-sm text-fgColor-muted'>
@@ -74,32 +77,21 @@ export default function TodoComponent() {
           <p className='text-lg'>Completed:</p>
           <button
             type='button'
-            className={`rounded-[6px] py-1 px-4 shadow border ${
-              isCompleted ? 'bg-green-500 border -green-500' : ''
-            }`}
+            className={`rounded-full size-7 flex justify-center 
+              items-center border-2 ${
+                isCompleted ? 'bg-green-500 border-green-500' : ''
+              }`}
             onClick={() =>
               setValue('isCompleted', !isCompleted, { shouldDirty: true })
             }>
-            {isCompleted ? (
-              <Check size={25} className={`stroke-white`} />
-            ) : (
-              <XIcon size={25} className={`stroke-black`} />
-            )}
+            {isCompleted && <Check size={20} className={`stroke-white`} />}
           </button>
         </div>
 
         <button disabled={!isDirty} type='submit' className='button w-full'>
-          Save
+          {naivigation.state === 'submitting' ? <Spinner /> : <span>Save</span>}
         </button>
       </div>
     </form>
   );
 }
-
-const TodoOptions = () => {
-  return (
-    <button>
-      <CircleEllipsisIcon size={27} className='' />
-    </button>
-  );
-};

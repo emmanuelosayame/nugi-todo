@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { json, Outlet, redirect, RouteObject } from 'react-router-dom';
 import RootLayout from '../layout/layout';
-import TodoComponent from './todo';
+import TodoComponent from './:todoId';
 import Store from '../store';
 import { API } from '../store/apiSlice';
 import { DTOToType, parseFormData } from '../utils/parser';
