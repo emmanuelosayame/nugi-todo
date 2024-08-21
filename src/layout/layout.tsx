@@ -4,9 +4,12 @@ import SideBar from './SideBar';
 
 function RootLayout() {
   return (
-    <main className={`md:h-screen bg-white flex max-w-screen-[1400px] mx-auto`}>
+    <main
+      className={`md:h-screen bg-white flex max-w-screen-[1400px] mx-auto w-full`}>
       <SideBar />
-      <div className='md:w-[70%] pt-20 min-h-screen h-full bg-bgColor-inset relative overflow-y-auto'>
+      <div
+        className='md:w-[70%] w-full
+       pt-20 min-h-screen h-full bg-bgColor-inset relative overflow-y-auto'>
         <Header />
         <Outlet />
       </div>
