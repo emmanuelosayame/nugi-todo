@@ -7,10 +7,7 @@ import { API } from '../store/apiSlice';
 import { DTOToType, parseFormData } from '../utils/parser';
 import { todoMutatationS } from '../entities/todos';
 import { sonner } from '../components/toaster';
-
-function delay() {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
-}
+import { delay } from '../utils/helpers';
 
 export const todoRoutes: RouteObject = {
   path: 'todos',
@@ -31,6 +28,7 @@ export const todoRoutes: RouteObject = {
           path: ':todoId',
           loader: async ({ params }) => {
             const todoId = params.todoId!;
+            //delay to allow msw initialize
             await delay();
             const { isSuccess, data } =
               todoId === 'new'

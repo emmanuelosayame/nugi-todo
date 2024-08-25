@@ -34,7 +34,7 @@ export default function TodoComponent() {
       title: todo?.title ?? '',
       // convert stringified isCompleted to actual boolean
       isCompleted: JSON.parse(
-        ((todo?.isCompleted || 'false') as string).toLowerCase()
+        ((`${todo?.isCompleted}` || 'false') as string).toLowerCase()
       ),
       todoId,
     },
@@ -64,23 +64,22 @@ export default function TodoComponent() {
 
         {todo && <TodoOptions todo={todo} />}
       </div>
-      <div className='px-3 w-full flex flex-col gap-4 items-center max-w-xl mx-auto'>
+      <div className='px-3 w-full flex flex-col gap-4 items-center max-w-3xl mx-auto'>
         <h5 className='text-sm text-fgColor-muted'>
           {format(updatedAt, 'PPp')}
         </h5>
         <textarea
-          rows={5}
+          rows={2}
           {...register('title')}
-          className='text-2xl rounded-lg py-3 px-5 w-full border font-medium'
+          className='bg-transparent text-2xl rounded-lg py-3 px-5 w-full border font-medium'
           placeholder='Enter Title'
           autoFocus
         />
-        {/* I noticed api doesn't allow reverting completed todo state. I'll make it
-        one way here then. */}
+
         <div className='w-full flex items-center justify-center gap-5'>
           <p className='text-lg'>Completed:</p>
           <button
-            disabled={isCompleted}
+            // disabled={isCompleted}
             type='button'
             className={`rounded-full size-7 flex justify-center 
               items-center border-2 disabled:opacity-50 ${

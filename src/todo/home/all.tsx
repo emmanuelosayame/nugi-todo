@@ -8,21 +8,23 @@ function AllTodos({ todos }: { todos: Todo[] }) {
 
   return (
     <>
-      <div className='w-full mt-4'>
-        <div className='flex justify-between items-center px-5'>
-          <h4 className='text-lg'>
-            On Progress{' '}
-            <span className='font-normal text-neutral-600'>
-              ({notCompletedTodos.length})
-            </span>
-          </h4>
-          <Link
-            replace
-            to={'/todos?filter=on-progress'}
-            className='text-fgColor-link'>
-            View All
-          </Link>
-        </div>
+      <div className='w-full'>
+        {notCompletedTodos.length > 0 && (
+          <div className='flex justify-between items-center px-5 mt-4'>
+            <h4 className='text-lg'>
+              On Progress{' '}
+              <span className='font-normal text-neutral-600'>
+                ({notCompletedTodos.length})
+              </span>
+            </h4>
+            <Link
+              replace
+              to={'/todos?filter=on-progress'}
+              className='text-fgColor-link'>
+              View All
+            </Link>
+          </div>
+        )}
 
         <div className='flex gap-5 overflow-x-auto px-5 w-full mt-3'>
           {notCompletedTodos.slice(0, 5).map((todo) => (
