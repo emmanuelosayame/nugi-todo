@@ -7,7 +7,7 @@ function SideBar() {
   const filter = (searchParams.get('filter') ?? 'all') as Filters;
 
   return (
-    <div className='w-[30%] hidden md:block'>
+    <div className='w-[10%] hidden md:block'>
       <h4 className='uppercase text-3xl font-semibold p-4'>Nugi Todo</h4>
 
       <div className='text-lg mt-10 border-t pt-5 flex flex-col gap-5'>

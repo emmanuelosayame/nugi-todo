@@ -7,7 +7,7 @@ import { sonner } from '../../components/toaster';
 import { Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog';
 import { CircleEllipsisIcon, Trash2Icon } from 'lucide-react';
 import { format } from 'date-fns';
-import { Spinner } from '../../components/Spinner';
+import { Spinner } from '../../components/spinner';
 
 const TodoOptions = ({ todo }: { todo: Todo }) => {
   const [loading, setLoading] = useState(false);

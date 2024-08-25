@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 import { Check, ChevronLeftIcon } from 'lucide-react';
 import { Todo, todoMutatationS, TodoMutation } from '../../entities/todos';
 import TodoOptions from './todoOptions';
-import { Spinner } from '../../components/Spinner';
+import { Spinner } from '../../components/spinner';
 
 export default function TodoComponent() {
   const { todoId, todo } = useLoaderData() as {

@@ -3,8 +3,7 @@ import { SearchIcon, XIcon } from 'lucide-react';
 import { useGetTodosQuery } from '../store/apiSlice';
 import { Loading } from '../components/loading';
 import { useState } from 'react';
-import Fuse from 'fuse.js';
-import { debounce } from 'lodash';
+import { debounce, searchOnKeys } from '../utils/helpers';
 
 const Search = () => {
   const { data, isLoading } = useGetTodosQuery(undefined, {});
@@ -15,10 +14,7 @@ const Search = () => {
 
   const [keyword, setKeyword] = useState<string>();
 
-  const fuse = new Fuse(allTodos, { keys: ['title'] });
-  const hitItems = keyword
-    ? fuse.search(keyword).map((hit) => hit.item)
-    : allTodos;
+  const hitItems = searchOnKeys(allTodos, ['title'], keyword, allTodos);
 
   if (isLoading) return <Loading />;
 

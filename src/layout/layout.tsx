@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Header from './header';
-import SideBar from './SideBar';
+import SideBar from './sideBar';
 
 function RootLayout() {
   return (
@@ -8,7 +8,7 @@ function RootLayout() {
       className={`md:h-screen bg-white flex max-w-screen-[1400px] mx-auto w-full`}>
       <SideBar />
       <div
-        className='md:w-[70%] w-full
+        className='md:w-[90%] w-full
        pt-20 min-h-screen h-full bg-bgColor-inset relative overflow-y-auto'>
         <Header />
         <Outlet />

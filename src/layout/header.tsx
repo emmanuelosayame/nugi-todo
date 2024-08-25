@@ -1,6 +1,6 @@
 import { MenuIcon } from 'lucide-react';
 import image from '../assets/profile.jpg';
-import Search from '../components/Search';
+import Search from '../components/search';
 
 function Header() {
   return (
