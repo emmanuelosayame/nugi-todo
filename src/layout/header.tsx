@@ -9,14 +9,15 @@ function Header() {
      items-center gap-4 px-3 py-2.5 border-b'>
       {/* <h4 className='text-lg font-semibold'>Nugi</h4> */}
 
-      <div className='flex items-center flex-1 gap-2'>
-        <img
-          src={image}
-          className='w-10 h-10 rounded-full border object-contain'
-        />
-        <div className='leading-3 font-normal text-black/80'>
-          <h5 className='text-[17px]'>Hello,</h5>
-          <p className='text-lg'>Emmanuel</p>
+      <div className=' flex-1'>
+        <div
+          className='flex gap-2 items-center bg-primary-light/10 
+        w-fit py-1 px-5 rounded-full '>
+          <img
+            src={image}
+            className='size-7 rounded-full border object-contain'
+          />
+          <p className=''>LA</p>
         </div>
       </div>
 

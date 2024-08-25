@@ -35,22 +35,22 @@ export function Home() {
     <>
       <div className='flex px-4 items-center gap-4 md:w-1/2 md:hidden'>
         <button
-          className={`py-1.5 w-full transition-all ${
-            filter === 'all' ? 'bg-[#0757ba] text-white rounded-lg' : ''
+          className={`py-1 w-full transition-all ${
+            filter === 'all' ? 'bg-[#0757ba] text-white rounded-md' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'all' })}>
           All
         </button>
         <button
-          className={`py-1.5 w-full transition-all ${
-            filter === 'on-progress' ? 'bg-[#0757ba] text-white rounded-lg' : ''
+          className={`py-1 w-full transition-all ${
+            filter === 'on-progress' ? 'bg-[#0757ba] text-white rounded-md' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'on-progress' })}>
           On Progress
         </button>
         <button
-          className={`py-1.5 w-full transition-all ${
-            filter === 'completed' ? 'bg-[#0757ba] text-white rounded-lg' : ''
+          className={`py-1 w-full transition-all ${
+            filter === 'completed' ? 'bg-[#0757ba] text-white rounded-md' : ''
           }`}
           onClick={() => setSearchParams({ filter: 'completed' })}>
           Completed
@@ -61,8 +61,8 @@ export function Home() {
 
       <Link
         to={'/todos/new'}
-        className='button fixed bottom-4 md:bottom-7 center-x 
-        md:left-auto md:right-10 w-11/12 md:w-40 md:py-4'>
+        className='button fixed bottom-4 md:bottom-20 center-x 
+        md:left-auto md:right-10 w-11/12 md:w-44 md:py-1.5'>
         <PlusIcon width={30} />
         <p>Create New</p>
       </Link>
@@ -80,13 +80,14 @@ export const OnProgressTodo = ({
   return (
     <Link
       to={`/todos/${todo.id}`}
-      className='rounded-xl border border-border-muted bg-white p-5'>
+      className='rounded-xl border border-border-muted bg-white px-5 py-2
+      transition-all hover:opacity-65 hover:scale-95'>
       <div className={`${scrollDirection === 'vertical' ? '' : 'w-56'}`}>
         <h6 className='text-lg whitespace-nowrap text-ellipsis'>
           {todo.title}
         </h6>
 
-        <div className='pt-3 border-t mt-2 font-normal'>
+        <div className='pt-1 border-t mt-1 font-normal'>
           <p className='text-[15px] font-normal text-neutral-600'>
             {format(todo.updatedAt, 'PPp')}
           </p>
@@ -100,15 +101,16 @@ export const CompletedTodo = ({ todo }: { todo: Todo }) => {
   return (
     <Link
       to={`/todos/${todo.id}`}
-      className='rounded-xl border border-border-muted bg-white p-5'>
+      className='rounded-xl border border-border-muted bg-white px-5 py-2
+      transition-all hover:opacity-65 hover:scale-95'>
       <div className='flex '>
         <h6 className='text-lg whitespace-nowrap text-ellipsis flex-1 line-through'>
           {todo.title}
         </h6>
 
-        <CheckCircleIcon className='stroke-green-500' width={20} />
+        <CheckCircleIcon className='stroke-primary' width={20} />
       </div>
-      <div className='pt-3 border-t mt-2 font-normal'>
+      <div className='pt-1 border-t mt-1 font-normal'>
         <p className='text-sm font-normal text-neutral-600'>
           {format(todo.updatedAt, 'PPp')}
         </p>

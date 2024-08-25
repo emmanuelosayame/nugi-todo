@@ -15,9 +15,9 @@ export const searchOnKeys = <T>(
   arr: T[],
   keys: (keyof T)[],
   keyword: string | undefined,
-  defaultReturn = []
+  onEmpty: T[] = []
 ): T[] => {
-  if (!keyword) return defaultReturn;
+  if (!keyword) return onEmpty;
   const lowerKeyword = keyword.toLowerCase();
 
   return arr.filter((item) => {

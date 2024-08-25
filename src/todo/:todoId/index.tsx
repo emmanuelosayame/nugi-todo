@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { Check, ChevronLeftIcon } from 'lucide-react';
 import { Todo, todoMutatationS, TodoMutation } from '../../entities/todos';
-import TodoOptions from './todoOptions';
+import TodoOptions from './todo-options';
 import { Spinner } from '../../components/spinner';
 
 export default function TodoComponent() {
@@ -53,10 +53,10 @@ export default function TodoComponent() {
         submit(data, { method: isNew ? 'POST' : 'PUT' })
       )}
       className=''>
-      <div className='flex justify-between w-full pr-3'>
+      <div className='flex justify-between w-full pr-5 md:mt-4'>
         <button
           type='button'
-          className='flex items-center'
+          className='flex items-center text-primary'
           onClick={() => naivigate(-1)}>
           <ChevronLeftIcon size={35} />
           <p className='text-base'>Todos</p>

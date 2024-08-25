@@ -33,7 +33,7 @@ const TodoOptions = ({ todo }: { todo: Todo }) => {
     <div className='relative'>
       <Root>
         <Trigger type='button'>
-          <CircleEllipsisIcon size={27} className='' />
+          <CircleEllipsisIcon size={27} className='text-primary' />
         </Trigger>
         <Overlay className=' bg-black/40 z-30 inset-0' />
         <Content
