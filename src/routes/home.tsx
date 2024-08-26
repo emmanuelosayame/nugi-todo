@@ -1,17 +1,17 @@
-import { API, useGetTodosQuery } from '../../store/apiSlice';
-import { Loading } from '../../components/loading';
+import { API, useGetTodosQuery } from '../store/apiSlice';
+import { Loading } from '../components/loading';
 import { CheckCircleIcon, PlusIcon } from 'lucide-react';
 import { Link, useSearchParams, useSubmit } from 'react-router-dom';
-import AllTodos from './all';
-import { Todo, todoMutatationS } from '../../entities/todos';
+import AllTodos from '../components/all';
+import { Todo, todoMutatationS } from '../entities/todos';
 import { format } from 'date-fns';
 import { ReactElement } from 'react';
-import OnProgress from './on-progress';
-import Completed from './completed';
-import { AnimatePage } from '../../components/animation';
-import { Filters } from '../../entities/shared';
-import Store from '../../store';
-import { DTOToType, parseFormData } from '../../utils/parser';
+import OnProgress from '../components/on-progress';
+import Completed from '../components/completed';
+import { AnimatePage } from '../components/animation';
+import { Filters } from '../entities/shared';
+import Store from '../store';
+import { DTOToType, parseFormData } from '../utils/parser';
 
 export async function action({ request }: any) {
   const formData =

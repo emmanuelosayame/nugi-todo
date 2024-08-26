@@ -1,15 +1,15 @@
 import { Suspense } from 'react';
 import { json, Outlet, redirect, RouteObject } from 'react-router-dom';
-import RootLayout from '../layout/layout';
-import TodoComponent from './:todoId';
-import Store from '../store';
-import { API } from '../store/apiSlice';
-import { DTOToType, parseFormData } from '../utils/parser';
-import { todoMutatationS } from '../entities/todos';
-import { sonner } from '../components/toaster';
-import { delay } from '../utils/helpers';
+import RootLayout from './layout/layout';
+import { delay } from './utils/helpers';
+import Store from './store';
+import { API } from './store/apiSlice';
+import { DTOToType, parseFormData } from './utils/parser';
+import { todoMutatationS } from './entities/todos';
+import TodoComponent from './routes/:todoid';
+import { sonner } from './components/toaster';
 
-export const todoRoutes: RouteObject = {
+export const allRoutes: RouteObject = {
   path: 'todos',
   Component: Outlet,
   children: [
@@ -22,7 +22,7 @@ export const todoRoutes: RouteObject = {
       children: [
         {
           index: true,
-          lazy: () => import('./home'),
+          lazy: () => import('./routes/home'),
         },
         {
           path: ':todoId',

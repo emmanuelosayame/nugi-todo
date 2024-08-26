@@ -9,7 +9,7 @@ import {
 import { Provider } from 'react-redux';
 import Store from './store';
 import { Loading } from './components/loading';
-import { todoRoutes } from './todo/routes';
+import { allRoutes } from './routes';
 
 function RootRoute() {
   // const {user} = useLoaderData() as {user: Promise<User | null>};
@@ -67,10 +67,7 @@ export const router = createBrowserRouter([
           return redirect('/todos');
         },
       },
-      todoRoutes,
-      // authRoutes,
-      // businessSetupRoutes,
-      // businessRoutes,
+      allRoutes,
     ],
   },
 ]);

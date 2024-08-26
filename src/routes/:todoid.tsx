@@ -1,16 +1,10 @@
-import {
-  useLoaderData,
-  useNavigate,
-  useNavigation,
-  useSubmit,
-} from 'react-router-dom';
+import { useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { Check, ChevronLeftIcon } from 'lucide-react';
-import { Todo, todoMutatationS, TodoMutation } from '../../entities/todos';
-import TodoOptions from './todo-options';
-import { Spinner } from '../../components/spinner';
+import { Todo, todoMutatationS, TodoMutation } from '../entities/todos';
+import TodoOptions from '../components/todo-options';
 
 export default function TodoComponent() {
   const { todoId, todo } = useLoaderData() as {
@@ -21,7 +15,6 @@ export default function TodoComponent() {
   const isNew = todoId === 'new';
 
   const naivigate = useNavigate();
-  const naivigation = useNavigation();
 
   const {
     register,
@@ -64,7 +57,7 @@ export default function TodoComponent() {
 
         {todo && <TodoOptions todo={todo} />}
       </div>
-      <div className='px-3 w-full flex flex-col gap-4 items-center max-w-3xl mx-auto'>
+      <div className='px-3 w-full flex flex-col gap-4 items-center max-w-2xl mx-auto'>
         <h5 className='text-sm text-fgColor-muted'>
           {format(updatedAt, 'PPp')}
         </h5>
@@ -91,8 +84,11 @@ export default function TodoComponent() {
             {isCompleted && <Check size={20} className={`stroke-white`} />}
           </button>
         </div>
-        <button disabled={!isDirty} type='submit' className='button w-full'>
-          {naivigation.state === 'submitting' ? <Spinner /> : <span>Save</span>}
+        <button
+          disabled={!isDirty}
+          type='submit'
+          className='button w-full max-w-[400px]'>
+          <span>Save</span>
         </button>
       </div>
     </form>

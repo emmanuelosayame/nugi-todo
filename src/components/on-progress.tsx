@@ -1,5 +1,5 @@
-import { OnProgressTodo } from '.';
-import { Todo } from '../../entities/todos';
+import { OnProgressTodo } from '../routes/home';
+import { Todo } from '../entities/todos';
 
 function OnProgress({ todos }: { todos: Todo[] }) {
   const notCompletedTodos = todos.filter((todo) => !todo.isCompleted);

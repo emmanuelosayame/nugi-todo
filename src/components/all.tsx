@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { CompletedTodo, OnProgressTodo } from '.';
-import { Todo } from '../../entities/todos';
+import { CompletedTodo, OnProgressTodo } from '../routes/home';
+import { Todo } from '../entities/todos';
 
 function AllTodos({ todos }: { todos: Todo[] }) {
   const completedTodos = todos.filter((todo) => !!todo.isCompleted);
@@ -20,7 +20,7 @@ function AllTodos({ todos }: { todos: Todo[] }) {
             <Link
               replace
               to={'/todos?filter=on-progress'}
-              className='text-fgColor-link'>
+              className='text-fgColor-link transition-all hover:scale-90'>
               View All
             </Link>
           </div>
@@ -46,7 +46,7 @@ function AllTodos({ todos }: { todos: Todo[] }) {
           <Link
             replace
             to={'/todos?filter=completed'}
-            className='text-fgColor-link'>
+            className='text-fgColor-link transition-all hover:scale-90'>
             View All
           </Link>
         </div>

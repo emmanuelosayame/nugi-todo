@@ -1,5 +1,5 @@
-import { CompletedTodo } from '.';
-import { Todo } from '../../entities/todos';
+import { CompletedTodo } from '../routes/home';
+import { Todo } from '../entities/todos';
 
 function Completed({ todos }: { todos: Todo[] }) {
   const completedTodos = todos.filter((todo) => todo.isCompleted);

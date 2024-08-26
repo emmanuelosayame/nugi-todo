@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Todo } from '../../entities/todos';
+import { Todo } from '../entities/todos';
 import { useNavigate } from 'react-router-dom';
-import Store from '../../store';
-import { API } from '../../store/apiSlice';
-import { sonner } from '../../components/toaster';
+import Store from '../store';
+import { API } from '../store/apiSlice';
+import { sonner } from './toaster';
 import { Content, Overlay, Root, Trigger } from '@radix-ui/react-dialog';
 import { CircleEllipsisIcon, Trash2Icon } from 'lucide-react';
 import { format } from 'date-fns';
-import { Spinner } from '../../components/spinner';
+import { Spinner } from './spinner';
 
 const TodoOptions = ({ todo }: { todo: Todo }) => {
   const [loading, setLoading] = useState(false);
